@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Genetic Dancing Stick Figure</title>
+  <style>
+    body {
+      margin: 0; 
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+    #ui {
+      width: 260px;
+      padding: 10px;
+      background: #eee;
+      box-sizing: border-box;
+      border-right: 1px solid #ccc;
+    }
+    #canvas-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f8f8f8;
+      overflow: hidden;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    input[type=range], input[type=color] {
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 15px;
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+    }
+    .color-picker-group {
+      margin-top: 15px;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+    }
+    .color-picker-group label {
+      font-weight: normal;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div id="ui">
+    <label>Wave Amplitude: <input id="waveAmplitudeSlider" type="range" min="0" max="50" value="20" step="1"></label>
+    <label>Wave Frequency: <input id="waveFrequencySlider" type="range" min="0" max="0.5" value="0.15" step="0.01"></label>
+    <label>Limb Thickness: <input id="limbThicknessSlider" type="range" min="2" max="20" value="8" step="1"></label>
+    <label>Limb Length: <input id="limbLengthSlider" type="range" min="150" max="350" value="150" step="1"></label>
+    <label>Hand/Foot Size: <input id="handFootSizeSlider" type="range" min="5" max="40" value="20" step="1"></label>
+    <label>Generation Speed: <input id="generationSpeedSlider" type="range" min="0" max="100" value="50" step="1"></label>
+    <button id="pauseMutationBtn">Pause Mutation</button>
+    <button id="mutateOnceBtn">Mutate Once</button>
+    <div class="color-picker-group">
+      <strong>Colors (enabled when mutation paused):</strong>
+      <label for="bgColorPicker">Background Color:</label>
+      <input type="color" id="bgColorPicker" value="#f0f0f0">
+      <label>Torso Color: <input type="color" id="torsoColorPicker" /></label>
+      <label>Limbs Color: <input type="color" id="limbColorPicker" /></label>
+      <label>Head Color: <input type="color" id="headColorPicker" /></label>
+      <label>Hands & Feet Color: <input type="color" id="handFootColorPicker" /></label>
+    </div>
+    <div style="margin-top:20px;">
+      <small>Drag limbs by clicking on circles (hands, feet, head).</small>
+    </div>
+  </div>
+  <div id="canvas-container"></div>
+  
+  <!-- Load p5.js first -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.min.js"></script>
+  
+  <!-- Load modules in dependency order -->
+  <script src="dna.js"></script>
+  <script src="StickFigure.js"></script>
+  <script src="sketch.js"></script>
+</body>
+</html>

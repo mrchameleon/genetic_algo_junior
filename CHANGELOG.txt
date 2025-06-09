@@ -1,0 +1,39 @@
+improvements made:
+
+
+1. Centralized Ranges
+
+All numeric ranges are now in DNA.RANGES static object
+Easy to modify ranges in one place
+Mutation amounts are also centralized
+Cleaner code with const r = DNA.RANGES shorthand
+
+2. New Draw Order
+
+Arms and legs draw first (behind body)
+Hands and feet next
+Torso draws on top of limbs
+Neck draws after torso
+Head draws last
+Drag points draw on top of everything
+
+3. Neck Wiggle
+
+New drawWiggleNeck() method with milder wiggle
+Uses arc-like motion (sin(PI * pos)) instead of full wave
+Slower animation (t * 0.5) for more natural movement
+Fewer points (8 vs 20) for smoother curves
+
+4. Head Rotation
+
+New drawRotatedHead() method
+Rotates head by dna.headRotation (±45 degrees)
+Uses push()/pop() to isolate transformation
+
+5. New DNA Properties
+
+neckWiggle: 0-15 range (milder than limb wiggle)
+headRotation: ±45 degrees
+Both are included in mutations and UI updates
+
+The ranges are now all data-driven, so you can easily adjust them in the DNA.RANGES object without hunting through the code. The draw order gives a much more natural layered appearance, and the neck wiggle and head rotation add nice character variation!
